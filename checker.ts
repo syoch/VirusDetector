@@ -33,7 +33,7 @@ async function checkUrl(url: string) {
   const res = await fetch(url);
   const arrayBuffer = await res.arrayBuffer();
   const bytes = new Uint8Array(arrayBuffer);
-
+  console.log(`Scanned ${url}`);
   return await checkBytes(bytes);
 }
 
