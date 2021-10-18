@@ -1,7 +1,7 @@
-import { Message } from "https://deno.land/x/discordeno/mod.ts";
+import { DiscordenoMessage } from "https://deno.land/x/discordeno/mod.ts";
 
 
-export async function check(message: Message) {
+export async function check(message: DiscordenoMessage) {
   const urls = message.attachments.map(attachment => attachment.url);
   const result: { [key: string]: string[] } = {};
   for (const url of urls) {
