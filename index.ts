@@ -10,11 +10,12 @@ startBot({
       console.log("Successfully connected to gateway");
     },
     async messageCreate(message) {
+      if (message.isBot) return;
+      if (!message.attachments) return;
+
       const scanResult = await check(message);
 
-      if (!scanResult) {
-        return;
-      }
+      if (Object.keys(scanResult).length === 0) return;
 
       let response = "";
 
