@@ -1,6 +1,10 @@
 import { DiscordenoMessage } from "https://deno.land/x/discordeno/mod.ts";
 import { findUrls } from "./find_url.ts";
 
+const ignoredExtensions = [
+  "png", "gif", "jpg"
+];
+
 function toLowered(bytes: Uint8Array): string {
   let str = "";
   for (const byte in bytes) {
@@ -13,7 +17,7 @@ export async function check(message: DiscordenoMessage) {
   const urls = [
     ...message.attachments.map(attachment => attachment.url),
     ...findUrls(message.content)
-  ];
+  ].filter(value => !ignoredExtensions.some(ext => value.endsWith(ext)));
 
 
 
