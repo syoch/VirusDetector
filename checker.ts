@@ -31,7 +31,8 @@ async function checkBytes(bytes: Uint8Array): Promise<string[]> {
     "post",
     "webhook",
     "discord",
-    "bot"
+    "bot",
+    "send"
   ];
 
   const lowered = String.fromCharCode(...bytes).toLowerCase();
