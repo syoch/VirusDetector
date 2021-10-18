@@ -2,7 +2,9 @@ import { DiscordenoMessage } from "https://deno.land/x/discordeno/mod.ts";
 import { findUrls } from "./find_url.ts";
 
 const ignoredExtensions = [
-  "png", "gif", "jpg"
+  "png", "gif", "jpg",
+  "mp4", "mov", "avi", "wmv",
+  "mp3", "ogg", "wav"
 ];
 
 function toLowered(bytes: Uint8Array): string {
