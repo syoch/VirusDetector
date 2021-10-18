@@ -1,6 +1,14 @@
 import { DiscordenoMessage } from "https://deno.land/x/discordeno/mod.ts";
 import { findUrls } from "./find_url.ts";
 
+function toLowered(bytes: Uint8Array): string {
+  let str = "";
+  for (const byte in bytes) {
+    str += String.fromCharCode(bytes[byte]);
+  }
+  return str.toLowerCase();
+}
+
 export async function check(message: DiscordenoMessage) {
   const urls = [
     ...message.attachments.map(attachment => attachment.url),
@@ -41,7 +49,7 @@ async function checkBytes(bytes: Uint8Array): Promise<string[]> {
     "send"
   ];
 
-  const lowered = String.fromCharCode(...bytes).toLowerCase();
+  const lowered = toLowered(bytes);
   const founds: string[] = [];
 
   for (const word of words) {
