@@ -11,6 +11,11 @@ startBot({
     },
     async messageCreate(message) {
       const scanResult = await check(message);
+
+      if (!scanResult) {
+        return;
+      }
+
       let response = "";
 
       response += "```md\n"
