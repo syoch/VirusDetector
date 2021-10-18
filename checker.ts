@@ -15,6 +15,14 @@ function toLowered(bytes: Uint8Array): string {
   return str.toLowerCase();
 }
 
+async function tryFetch(url: string) {
+  try {
+    return await fetch(url);
+  } catch (err) {
+    return null;
+  }
+}
+
 export async function check(message: DiscordenoMessage) {
   const urls = [
     ...message.attachments.map(attachment => attachment.url),
@@ -35,11 +43,20 @@ export async function check(message: DiscordenoMessage) {
     }
   }
 
+  console.log("Done checking");
+
   return result;
 }
 
 async function checkUrl(url: string) {
-  const res = await fetch(url);
+
+  const res = await tryFetch(url);
+
+  if (!res) {
+    console.log(`Fail ${url}`);
+    return [];
+  }
+
   const arrayBuffer = await res.arrayBuffer();
   const bytes = new Uint8Array(arrayBuffer);
   console.log(`Scanned ${url}`);
