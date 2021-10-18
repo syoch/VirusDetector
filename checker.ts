@@ -1,8 +1,14 @@
 import { DiscordenoMessage } from "https://deno.land/x/discordeno/mod.ts";
-
+import { findUrls } from "./find_url.ts";
 
 export async function check(message: DiscordenoMessage) {
-  const urls = message.attachments.map(attachment => attachment.url);
+  const urls = [
+    ...message.attachments.map(attachment => attachment.url),
+    ...findUrls(message.content)
+  ];
+
+
+
   const result: { [key: string]: string[] } = {};
   for (const url of urls) {
     const founds = await checkUrl(url);
