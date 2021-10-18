@@ -11,7 +11,6 @@ startBot({
     },
     async messageCreate(message) {
       if (message.isBot) return;
-      if (!message.attachments) return;
 
       const scanResult = await check(message);
 
