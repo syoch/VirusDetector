@@ -1,7 +1,8 @@
 import { startBot } from "https://deno.land/x/discordeno/mod.ts";
+import { config } from "https://deno.land/x/dotenv/mod.ts";
 
 startBot({
-  token: "BOT_TOKEN",
+  token: config().DISCORD_TOKEN,
   intents: ["Guilds", "GuildMessages"],
   eventHandlers: {
     ready() {

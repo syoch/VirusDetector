@@ -5,5 +5,5 @@
 You should be run
 
 ```sh
-$ deno run --allow-net index.ts
+$ deno run --allow-net --allow-read index.ts
 ```
