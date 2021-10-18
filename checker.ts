@@ -19,7 +19,10 @@ export async function check(message: DiscordenoMessage) {
   const urls = [
     ...message.attachments.map(attachment => attachment.url),
     ...findUrls(message.content)
-  ].filter(value => !ignoredExtensions.some(ext => value.endsWith(ext)));
+  ]
+    .filter(value => !ignoredExtensions.some(ext => value.endsWith(ext)))
+    .filter(value => !value.startsWith("https://youtube.com"))
+    .filter(value => !value.startsWith("https://youtu.be"));
 
 
 
