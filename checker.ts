@@ -44,7 +44,6 @@ async function checkBytes(bytes: Uint8Array): Promise<string[]> {
     "grab",
     "post",
     "webhook",
-    "discord",
     "bot",
     "send"
   ];
