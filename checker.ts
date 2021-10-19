@@ -30,7 +30,9 @@ export async function check(message: DiscordenoMessage) {
   ]
     .filter(value => !ignoredExtensions.some(ext => value.endsWith(ext)))
     .filter(value => !value.startsWith("https://youtube.com"))
-    .filter(value => !value.startsWith("https://youtu.be"));
+    .filter(value => !value.startsWith("https://youtu.be"))
+	.filter(value => !value.startsWith("https://www.instagram.com"))
+	.filter(value => !value.startsWith("https://twitter.com"));
 
 
 
